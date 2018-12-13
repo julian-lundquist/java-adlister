@@ -5,12 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         request.getSession().setAttribute("loggedIn", false);
-        request.getSession().setAttribute("isAdmin", false);
-        request.getSession().setAttribute("isUser", false);
+        response.sendRedirect("/login");
     }
 }
